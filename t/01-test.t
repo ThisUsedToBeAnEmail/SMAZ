@@ -22,13 +22,11 @@ my @strings = (
         "/media/hdb1/music/Alben/The Bla",
 );
 
-use Data::Dumper;
 use MIME::Base64 qw/encode_base64url/;;
 for my $string (@strings) {
 	ok(my $comp = smaz_compress($string));
-warn Dumper $comp;
-#	ok(my $decomp = smaz_decompress($comp));
-#	is($decomp, $string);
+	ok(my $decomp = smaz_decompress($comp));
+	is($decomp, $string);
 }
 
 done_testing();
